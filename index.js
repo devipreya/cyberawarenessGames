@@ -7,8 +7,8 @@ const port = process.env.PORT || 5001;
 
 // Paths setup
 const templatePath = path.join(__dirname, './template');
-app.use('/images', express.static(path.join(__dirname, "../images")));
-app.use(express.static(path.join(__dirname, "../public")));
+app.use('/images', express.static(path.join(__dirname, "./images")));
+app.use(express.static(path.join(__dirname, "./public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
