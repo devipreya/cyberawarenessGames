@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Games Hub</title>
+  <style>
+    html {
+      background-image: url(./images/303.jpg);
+      background-position: 0;
+      background-size: cover;
+      background-repeat: repeat;
+    }
+
+    body {
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .button-container button {
+      width: 400px;
+      height: 400px;
+      background-color: #a048e1;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    button:hover {
+      background-color: #0d6efd;
+    }
+
+    .button-image {
+      width: 350px;
+      height: 350px;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    #game2 .button-image {
+      background-image: url(./images/pass1final.PNG);
+    }
+
+    #game1 .button-image {
+      background-image: url(./images/quizthuumb_final.PNG);
+    }
+
+    #game3 .button-image {
+      background-image: url(./images/minesweeper_final.JPG);
+      width: 350px;
+      height: 350px;
+    }
+
+    button span {
+      font-size: 1.3rem;
+      margin-top: 8px;
+      text-align: center;
+      font-family: 'public_pixel';
+    }
+
+    @font-face {
+        font-family: "public_pixel";
+        src: url("/PublicPixel-rv0pA.ttf") format('truetype');
+    }
+
+    
+    .button-home {
+        width: 120px;
+        height: 50px;
+        background-color: #0d6efd;
+        border-radius: 30px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+        font-family: 'public_pixel';
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    #home {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 120px;
+        height: 50px;
+        background-color: #0d6efd;
+        border-radius: 30px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+        font-family: public_pixel;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    #home:hover {
+        background-color: #a048e1;
+    }
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <h1 style="font-family: public_pixel;">🎮 Welcome to the Games Hub!</h1>
+
+  <div class="button-container">
+    <button id="game1" onclick="goToGame('/level1')">
+      <div class="button-image"></div>
+      <span>Cybersecurity Quiz</span>
+    </button>
+
+    <button id="game2" onclick="goToGame('/level2')">
+      <div class="button-image"></div>
+      <span>Password Challenge</span>
+    </button>
+
+    <button id="game3" onclick="goToGame('/level3')">
+      <div class="button-image"></div>
+      <span>Cybersecurity Minesweeper</span>
+    </button>
+  </div>
+
+  <button id="home" class="button-home" onclick="goToGame('/')">Home</button>
+
+  <script>
+    function goToGame(gamePage) {
+      window.location.href = gamePage;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: black; color: white; }
+        h1 { color: yellow; }
+        table { width: 50%; margin: 20px auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid white; }
+        th { background-color: purple; }
+        button { padding: 10px 20px; margin-top: 20px; cursor: pointer; background: purple; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+    <table>
+        <thead>
+            <tr><th>Rank</th><th>Name</th><th>Score</th></tr>
+        </thead>
+        <tbody id="leaderboard"></tbody>
+    </table>
+    <button onclick="goBack()">Back to Quiz</button>
+
+    <script>
+        function fetchLeaderboard() {
+            fetch('/leaderboard-data')
+                .then(response => response.json())
+                .then(data => {
+                    let leaderboardHTML = "";
+                    data.forEach((user, index) => {
+                        leaderboardHTML += `<tr><td>${index + 1}</td><td>${user.name}</td><td>${user.score}</td></tr>`;
+                    });
+                    document.getElementById("leaderboard").innerHTML = leaderboardHTML;
+                });
+        }
+        function goBack() { window.location.href = "/"; }
+        fetchLeaderboard();
+    </script>
+</body>
+</html>

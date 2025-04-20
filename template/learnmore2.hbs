@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity</title>
+    <script src="https://kit.fontawesome.com/5efe62cc49.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: gamecontent;
+        }
+        header {
+            background-color:rgba(134, 141, 208, 0.1);
+            padding: 40px;
+        }
+        #footer{
+            background-color:#162f38;
+            padding: 40px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 250px;
+        }
+        nav ul li {
+            display: inline;
+            font-family: gamecontent;
+        }
+        nav ul li a {
+            color: white;
+            font-family: gamecontent;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        #hello {
+            background-image: url("./images/Untitled\ design.gif");
+            background-size: cover;
+            height:800px;
+            width:100%
+            
+        }
+        .arrow-down {
+            font-size: 30px;
+            padding-top: 50px;
+            cursor: pointer;
+            color:aliceblue;
+            text-align: center;
+        }
+        .overlay-text{
+            color:aliceblue;
+            font-family: gametitle;
+            text-align: center;
+            padding-top:100px;
+            font-size:100px;
+            font-weight:bold;
+        }
+        .scroll{
+            color:aliceblue;
+            font-family: gamecontent;
+            text-align: center;
+            font-size:30px;
+            font-weight:bold;
+            align-items: center;
+        }
+        a{
+            font-family: gamecontent;
+            font-weight: bold;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 90px;
+            padding: 70px;
+            background:linear-gradient(black,#162f38);
+        }
+        .nav-box {
+            border: solid aliceblue;
+            border-radius: 20px;
+            background-color:rgba(134, 141, 208, 0.1);
+            box-shadow:10px 10px aliceblue;
+            color:aliceblue;
+            padding: 65px 20px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .nav-box:hover {
+            background: rgb(19, 118, 151);
+            color:aliceblue;
+            transform: translateY(-10px);
+            font-size:25px;
+        }
+        .content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 30px;
+    padding: 50px;
+}
+.cyber {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    padding: 20px;
+    background:aliceblue;
+    box-shadow:10px 10px #162f38;
+    border-radius: 10px;
+}
+.cyber img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+        .b{
+            font-weight: bold;
+        }
+        #what{
+            height:300px;
+            width:600px;
+        }
+        #popular{
+            height:300px;
+            width:500px;
+        }
+        #threatts{
+            height:300px;
+            width:600px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            padding-left: 650px;
+            
+        }
+        .social-icons li {
+            display: inline-block;
+        }
+        .social-icons a {
+            text-decoration: none;
+            font-size: 24px;
+            color: aliceblue;
+        }
+        
+        @font-face {
+                font-family:"gametitle";
+                src: url("./Stormfaze.otf");
+            }
+
+            @font-face {
+                font-family:"gamecontent";
+                src: url("./NoticiaText-Regular.ttf");
+            }
+
+    </style>
+</head>
+<body>
+    <div id="hello">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/login">Start a Game</a></li>
+                <li><a href="/aboutus">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home" class="hero">
+        <div class="hero-image">
+            <h2 class="overlay-text">CYBER SECURITY</h2>
+            <h3 class="scroll">Scroll to learn more</h3>
+        </div>
+        <div class="arrow-down" onclick="scrollDown()">
+            <span>&#9660;</span>
+        </div>
+    </section>
+    </div>
+    <script>
+        function scrollDown() {
+            window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+        }
+    </script>
+    <div class="nav-container">
+        <div class="nav-box" onclick="location.href='#cybersecurity'">What is Cyber Security</div>
+        <div class="nav-box" onclick="location.href='#threats'">Common Cyber Security Threats</div>
+        <div class="nav-box" onclick="location.href='#protection'">Tips to Protect Yourself Online</div>
+        <div class="nav-box" onclick="location.href='#tools'">Popular Cyber Security Tools</div>
+    </div>
+
+    <div class="content">
+        <section id="cybersecurity" class="cyber">
+            <h2>What is Cyber Security?</h2>
+            <p>Cybersecurity refers to the practice of protecting computer systems, networks,<br> and data from digital attacks, unauthorized access, and data breaches. It ensures<br> the confidentiality, integrity, and availability of information, which are essential to <br>safeguard individuals, businesses, and organizations from cyber threats.
+            </p>
+            <img id="what" src="https://t4.ftcdn.net/jpg/02/45/63/69/360_F_245636933_kY23ohGptK5t6n8wGSXIgLgVXWeHJRct.jpg" alt="cybersecurity">
+
+        </section>
+        
+        <section id="threats" class="cyber">
+            <h2>Common Cyber Security Threats</h2>
+            <img id="threatts" src="https://managex.ae/wp-content/uploads/2022/05/What-are-the-seven-types-of-cyber-security-threats.jpg" alt="cybersecurity threats">
+            <p>Cybersecurity threats are constantly evolving as attackers develop more sophisticated methods to exploit vulnerabilities. Some of the most prevalent threats are
+            </p>
+            <ul>
+                <li class="b">Malware</li>
+                <p>Malware is a collective term for malicious software designed to harm or disrupt computer systems. It can take various forms, such as viruses, worms, spyware, and trojans. These harmful programs often infiltrate systems through infected files, deceptive downloads, or unsafe websites, leading to data breaches or system malfunctions.
+                </p>
+                <li class="b">Phishing</li>
+                <p>Phishing involves attackers impersonating trustworthy entities to deceive individuals into revealing sensitive information, such as login credentials or credit card details. These attacks are typically executed through deceptive emails, fake websites, or fraudulent text messages. Falling for phishing scams can result in identity theft or financial losses.</p>
+                <li class="b">Ransomware</li>
+                <p>Ransomware is a type of malware that encrypts the victim's data and demands a ransom for its release. This threat can cripple businesses, government agencies, and healthcare providers by locking access to crucial information, often causing significant operational and financial damage.
+                </p>
+                <li class="b">Distributed Denial of Service (DDoS) Attacks</li>
+                <p>DDoS attacks flood a network, server, or service with overwhelming internet traffic, rendering it inaccessible to legitimate users. These attacks can disrupt operations, damage reputations, and serve as distractions for other malicious activities.
+                </p>
+                <li class="b">Man-in-the-Middle (MITM) Attacks</li>
+                <p>MITM attacks occur when a malicious actor secretly intercepts and manipulates communication between two parties without their knowledge. This type of attack can expose sensitive information or alter communication content, compromising data security.
+                </p>
+            
+            </ul>
+        </section>
+        
+        <section id="protection" class="cyber">
+            <h2>Tips to Protect Yourself Online</h2>
+            <ol>
+                <li class="b"> Use Strong, Unique Passwords</li>
+                <p>Create complex passwords that are at least 12-16 characters long, combining uppercase and lowercase letters, numbers, and special symbols. Avoid using easily guessable information like birthdays or names. Ensure that every account has a unique password to reduce the risk of multiple accounts being compromised.
+                </p>
+                <li class="b">Enable Multi-Factor Authentication (MFA)</li>
+                <p>MFA adds an extra layer of security by requiring additional verification steps, such as a one-time code sent to your phone, fingerprint scan, or security key. Even if your password is stolen, MFA makes it harder for attackers to access your accounts.
+                </p>
+                <li class="b"> Keep Software and Systems Updated</li>
+                <p>Regular updates for operating systems, browsers, and applications often include security patches that fix vulnerabilities. Enable automatic updates wherever possible to ensure you're always protected against known threats.
+                </p>
+                <li class="b"> Be Cautious with Links and Attachments</li>
+                <p>Phishing emails and malicious websites often trick users into clicking harmful links or downloading infected files. Verify the sender’s identity and avoid interacting with suspicious messages. Hover over links to check their true destination before clicking.
+                </p>
+                <li class="b">Install and Maintain Reliable Antivirus Software</li>
+                <p>Good antivirus software can detect and block malware, spyware, and ransomware before they harm your system. Keep your antivirus software updated and run regular scans to maintain security.
+                </p>
+                <li class="b"> Use Secure Wi-Fi Networks</li>
+                <p>Avoid connecting to public Wi-Fi without a virtual private network (VPN). Public networks are more vulnerable to interception, allowing attackers to steal data or inject malware into your device.
+                </p>
+                <li class="b"> Backup Data Regularly</li>
+                <p>Store copies of important files on external storage devices or in the cloud. In case of a ransomware attack or system failure, backups can help restore data without paying a ransom.
+                </p>
+                <li class="b">Be Wary of Sharing Personal Information Online</li>
+                <p>Limit the information you share on social media and other platforms. Sensitive details like your full name, address, phone number, and financial information can be used for identity theft.</p>
+            </ol>
+        </section>
+        
+        <section id="tools" class="cyber">
+            <h2>Popular Cyber Security Tools</h2>
+            <img id="popular" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKTRvyHsCh0neawzOlBL1BxYKq14ErQTkZBw&s" alt="cybersecurity">
+            <ul>
+                <li><b>Wireshark</b>: A tool for capturing and analyzing network traffic in real time.</li>
+                <li><b>Nmap (Network Mapper)</b>: Scans networks to discover hosts, open ports, and services.</li>
+                <li><b>Metasploit Framework</b>: A platform for simulating attacks to assess system vulnerabilities.</li>
+                <li><b>Burp Suite</b>: Tests web applications for vulnerabilities like XSS and SQL injection.</li>
+                <li><b>Kali Linux</b>: A Linux distribution with pre-installed cybersecurity tools for ethical hacking.</li>
+                <li><b>Snort</b>: Monitors network traffic to detect and prevent security threats.</li>
+                <li><b>John the Ripper</b>: Cracks password hashes to test the strength of password policies.</li>
+                <li><b>Nessus</b>: Scans systems for security flaws and missing patches.</li>
+            </ul>
+        </section>
+    </div>
+    <div id="footer">
+        <ul class="social-icons">
+            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fab fa-snapchat"></i></a></li>
+            <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+        </ul>
+    </div>
+</body>
+</html>

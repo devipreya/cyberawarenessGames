@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Quiz Challenge</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+            font-family: public_pixel;
+        }
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+        #quiz-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        @font-face {
+            font-family: "public_pixel";
+            src: url("./PublicPixel-rv0pA.ttf");
+        }
+        #score-box {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 1.5rem;
+            padding: 10px;
+            border: 3px solid rgba(255, 255, 255,0.3);
+            border-radius: 10px;
+            display: inline-block;
+            transition: border-color 0.3s;
+        }
+        button {
+            display: block;
+            margin: 1rem auto;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background: purple;
+            font-family: public_pixel;
+            color: white;
+            
+            width: 48%;  /* Set buttons to the same width to align them evenly */
+            /* Uniform padding to control height */
+        }
+        #start-btn {
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+        }
+        .correct {
+            background-color: #77B254 !important;
+        }
+        .wrong {
+            background-color: #BE3144 !important;
+        }
+        .score-green {
+            border-color: #77B254 !important;
+        }
+        .score-red {
+            border-color: #BE3144 !important;
+        }
+        #timer {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .time-warning {
+            color: red !important;
+            animation: blink 1s infinite !important;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        #next-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 25px ;
+            width: 25%;
+            padding: 0.6rem 1.5rem;
+            margin: 0;
+            border: 3px solid rgba(255, 255, 255,0.3);
+            background:none ;
+            border-radius: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <img id="background" src="./images/level1imggif.gif" alt="Background GIF">
+
+    <div id="quiz-container">
+        <h1>Welcome to the Cybersecurity Quiz!</h1>
+        <button id="start-btn" onclick="startQuiz()">Start Challenge</button>
+    </div>
+
+    <script>
+        let questions = [
+            { Question: "What does the acronym 'VPN' stand for?", "Option A": "Virtual Private Network", "Option B": "Very Personal Network", "Option C": "Virtual Personal Node", "Option D": "Verified Private Network", Answer: "Virtual Private Network" },
+            { Question: "Which of these is a common form of social engineering?", "Option A": "Phishing", "Option B": "DDoS Attack", "Option C": "SQL Injection", "Option D": "Brute Force", Answer: "Phishing" },
+            { Question: "What does 'HTTPS' signify on a website URL?", "Option A": "HyperText Transfer Protocol Secure", "Option B": "High Traffic Transfer Protocol", "Option C": "HyperText Transfer Public", "Option D": "High-Tech Protocol System", Answer: "HyperText Transfer Protocol Secure" },
+            { Question: "Which of these is a strong password example?", "Option A": "password123", "Option B": "123456", "Option C": "Xy!9@bL3", "Option D": "qwerty", Answer: "Xy!9@bL3" },
+            { Question: "What is the purpose of a firewall?", "Option A": "To speed up the internet", "Option B": "To block unauthorized access", "Option C": "To create backups", "Option D": "To clean viruses", Answer: "To block unauthorized access" },
+            { Question: "What is multi-factor authentication (MFA)?", "Option A": "Using one password for all accounts", "Option B": "Using multiple devices for one account", "Option C": "Using multiple forms of verification", "Option D": "Using multiple IP addresses", Answer: "Using multiple forms of verification" },
+            { Question: "Which type of malware locks files until a ransom is paid?", "Option A": "Adware", "Option B": "Trojan", "Option C": "Ransomware", "Option D": "Spyware", Answer: "Ransomware" },
+            { Question: "Which of the following is an example of a phishing attempt?", "Option A": "A pop-up ad for a sale", "Option B": "An email asking for your password", "Option C": "A software update reminder", "Option D": "A friend request", Answer: "An email asking for your password" },
+            { Question: "What does a brute-force attack do?", "Option A": "Uses social tricks", "Option B": "Encrypts data", "Option C": "Tries every password combination", "Option D": "Blocks traffic", Answer: "Tries every password combination" },
+            { Question: "Which protocol is used to send emails?", "Option A": "HTTP", "Option B": "FTP", "Option C": "SMTP", "Option D": "SSH", Answer: "SMTP" },
+            { Question: "What is a DDoS attack?", "Option A": "Data Decryption Online System", "Option B": "Distributed Denial of Service", "Option C": "Digital Data Optimization System", "Option D": "Device Deployment Over System", Answer: "Distributed Denial of Service" },
+            { Question: "Which cybersecurity principle refers to restricting access to information?", "Option A": "Integrity", "Option B": "Confidentiality", "Option C": "Availability", "Option D": "Authentication", Answer: "Confidentiality" },
+            { Question: "What is an example of a secure method to store passwords?", "Option A": "Plain text", "Option B": "Hashed and salted", "Option C": "In a spreadsheet", "Option D": "Using simple words", Answer: "Hashed and salted" },
+            { Question: "What is the purpose of encryption?", "Option A": "Speeding up the internet", "Option B": "Hiding passwords", "Option C": "Protecting data by making it unreadable", "Option D": "Scanning for malware", Answer: "Protecting data by making it unreadable" },
+            { Question: "What is a zero-day vulnerability?", "Option A": "A public security fix", "Option B": "A vulnerability with no known fix", "Option C": "A type of malware", "Option D": "An expired certificate", Answer: "A vulnerability with no known fix" }
+        ];
+
+        let shuffledQuestions = [];
+        let currentQuestion = 0;
+        let score = 0;
+        let timer;
+
+        function shuffleQuestions() {
+            shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+        }
+
+        function startQuiz() {
+            shuffleQuestions();
+            document.getElementById('quiz-container').innerHTML = `
+                <div id="score-box">Score: 0</div>
+                <p id="timer">Time Left: 20s</p>
+                <h2 id="question"></h2>
+                <div id="options"></div><br><br>
+                <button id="next-btn" onclick="nextQuestion()">Next Question</button>
+            `;
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            if (currentQuestion >= shuffledQuestions.length) {
+                document.getElementById('quiz-container').innerHTML = `<h2>Quiz Over! Your score: ${score}</h2> <button id="replay" onclick="replay()">Restart Quiz</button><button id="nextgame" onclick="nextgame()">Next Game!</button><button id="goback" onclick="goback()">Go Back!</button>`;
+                return;
+            }
+
+            const q = shuffledQuestions[currentQuestion];
+            document.getElementById('question').textContent = q.Question;
+
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            Object.keys(q).forEach(key => {
+                if (key.startsWith("Option")) {
+                    const btn = document.createElement('button');
+                    btn.textContent = q[key];
+                    btn.onclick = () => checkAnswer(q[key], q.Answer);
+                    optionsDiv.appendChild(btn);
+                }
+            });
+
+            document.getElementById("score-box").classList.remove("score-green", "score-red");
+            document.getElementById("timer").classList.remove("time-warning");
+            startTimer();
+        }
+
+        function checkAnswer(selected, correct) {
+            clearInterval(timer);
+            let options = document.querySelectorAll("#options button");
+            let scoreBox = document.getElementById('score-box');
+            options.forEach(btn => { btn.disabled = true; })
+            options.forEach(btn => {
+                if (btn.textContent === correct) {
+                    btn.classList.add("correct"); // Highlight correct answer
+                }
+                if (btn.textContent === selected) {
+                    if (selected.toLowerCase() === correct.toLowerCase()) {
+                        score++;
+                        btn.classList.add("correct"); 
+                        scoreBox.classList.add("score-green"); // Border green for correct
+                    } else {
+                        btn.classList.add("wrong"); 
+                        scoreBox.classList.add("score-red"); // Border red for wrong
+                    }
+                }
+            });
+
+            document.getElementById('score-box').textContent = `Score: ${score}`;
+
+            // Delay before enabling next question button
+            document.getElementById("next-btn").disabled = false;
+        }
+
+        function startTimer() {
+            let timeLeft = 20;
+            const timerElement = document.getElementById('timer');
+            timerElement.textContent = `Time Left: ${timeLeft}s`;
+
+            timer = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = `Time Left: ${timeLeft}s`;
+                
+                if (timeLeft <= 5) {
+                    timerElement.classList.add("time-warning");
+                }
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    nextQuestion(); // Auto-skip if time runs out
+                }
+            }, 1000);
+        }
+
+        function nextQuestion() {
+            clearInterval(timer);
+            currentQuestion++;
+            loadQuestion();
+        }
+        function replay() {
+            window.location.href = '/level1';
+        }
+        function goback() {
+            window.location.href = '/levels';
+        }
+        function nextgame() {
+            window.location.href = '/level2';
+        }
+    </script>
+</body>
+</html>

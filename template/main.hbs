@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Start Page</title>
+    <style>
+        body {
+            background-image: url("/images/CYBER\ (1).gif");
+            background-size: cover;
+            background-repeat: repeat;
+            background-position: 0;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .overlaycontainer {
+            background-color: rgba(0, 0, 0, 0);
+            padding: 100px;
+            border-radius: 15px;
+            font-family: public_pixel;
+            color: black;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            align-items: flex-end;
+            flex-direction: row;
+            align-content: space-evenly;
+            -ms-flex-align: 30px;
+            gap: 120px;
+        }
+        @font-face {
+            font-family: "public_pixel";
+            src: url("./PublicPixel-rv0pA.ttf");
+        }
+
+        .griding {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        button {
+            padding: 30px 30px;
+            font-size: 30px;
+            font-family: "public_pixel";
+            cursor: pointer;
+            background-color: aliceblue;
+            border: solid rgb(146, 108, 202);
+            border-radius: 20px;
+            color: #bd4ce7;
+            box-shadow: 10px 10px plum;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #bd4ce7;
+            color: aliceblue;
+            border: white;
+            font-size: 55px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="button-container">
+        <button onclick="window.location.href='/login';">Start New Game</button> <!-- Login redirects -->
+        <button onclick="window.location.href='/login';">Resume Game</button> <!-- Login redirects -->
+        <button onclick="window.location.href='/learnmore2';">Learn More</button>
+    </div>
+
+</body>
+</html>
