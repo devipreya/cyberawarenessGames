@@ -1,12 +1,17 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => {
-        console.log("MongoDB connected successfully");
-    })
-    .catch(() => {
-        console.log("Error in connecting");
-    });
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000, // Adjust the timeout (default is 30000)
+    socketTimeoutMS: 45000, // Adjust socket timeout
+})
+.then(() => {
+    console.log("MongoDB connected successfully");
+})
+.catch((err) => {
+    console.error("Error in connecting to MongoDB:", err.message);
+});
 
 const LogInSchema = new mongoose.Schema({
     name: {
