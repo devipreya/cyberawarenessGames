@@ -6,7 +6,7 @@ const collection = require("./mongo");  // Assuming this is your MongoDB connect
 const port = process.env.PORT || 5001;
 
 // Paths setup
-const templatePath = path.join(__dirname, '../template');
+const templatePath = path.join(__dirname, './template');
 app.use('/images', express.static(path.join(__dirname, "../images")));
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.json());
